@@ -1,0 +1,2 @@
+1. Visualization of document similarity map
+2. Built-in support in Document for file input

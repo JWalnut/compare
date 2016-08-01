@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; wordmap 0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="wordmap 0.0 documentation" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p># John Walnut
+# v 0.1
+# Contains all methods and code for comparing two documents
+# 6/27/16</p>
+<p>from document import Document
+import math</p>
+<dl class="docutils">
+<dt>class Compare(object):</dt>
+<dd><p class="first">&#64;staticmethod
+def calculatePrimeLength(substring, document): #calculates to end of document (I&#8217;m calling it l&#8217;(s))</p>
+<blockquote>
+<div><p># todo: incorrect type handling
+# print &#8220;Calculating length of substring &#8220;&#8221;, substring, &#8220;&#8221; in document &#8220;&#8221;, document.body[:15], &#8221;...&#8221;&#8221;
+finalLength = document.length
+first = substring[:1]
+firstIndex = document.body.rfind(substring[:1])
+if firstIndex == -1:</p>
+<blockquote>
+<div>return 0</div></blockquote>
+<p># print &#8220;First Index = &#8221;, firstIndex
+nextIndex = firstIndex+1
+nextChar = 1
+while nextChar &lt; len(substring):</p>
+<blockquote>
+<div><p>#print &#8220;Searching for &#8216;&#8221;, substring[nextChar:nextChar+1], &#8220;&#8217;&#8221;
+tmp = document.body.rfind(substring[nextChar:nextChar+1], nextIndex)
+if tmp == -1:</p>
+<blockquote>
+<div>#print &#8220;Substring &#8220;&#8221;, substring, &#8220;&#8221; does not exist in document &#8220;&#8221;, document.body[:15], &#8221;...&#8221;&#8221;
+return 0</div></blockquote>
+<p>nextChar += 1</p>
+</div></blockquote>
+<p># print &#8220;Length calculated!&#8221;
+return document.length - firstIndex + 1</p>
+</div></blockquote>
+<p>&#64;staticmethod
+def calculateLength(substring, document): #calculates to end of substring (l(s) as in paper)</p>
+<blockquote>
+<div><p># todo: incorrect type handling
+# print &#8220;Calculating length of substring &#8220;&#8221;, substring, &#8220;&#8221; in document &#8220;&#8221;, document.body[:15], &#8221;...&#8221;&#8221;
+finalLength = document.length
+first = substring[:1]
+firstIndex = document.body.rfind(substring[:1])
+if firstIndex == -1:</p>
+<blockquote>
+<div>return 0</div></blockquote>
+<p># print &#8220;First Index = &#8221;, firstIndex
+nextIndex = firstIndex+1
+nextChar = 1
+tmp = 0
+while nextChar &lt; len(substring):</p>
+<blockquote>
+<div><p>#print &#8220;Searching for &#8216;&#8221;, substring[nextChar:nextChar+1], &#8220;&#8217;&#8221;
+tmp = document.body.rfind(substring[nextChar:nextChar+1], nextIndex)
+if tmp == -1:</p>
+<blockquote>
+<div>#print &#8220;Substring &#8220;&#8221;, substring, &#8220;&#8221; does not exist in document &#8220;&#8221;, document.body[:15], &#8221;...&#8221;&#8221;
+return 0</div></blockquote>
+<p>nextChar += 1</p>
+</div></blockquote>
+<p># print &#8220;Length calculated!&#8221;</p>
+<p>return tmp - firstIndex + 1</p>
+</div></blockquote>
+<p>&#64;staticmethod
+def K_Prime(doc1, doc2, n, lambd = 0.5):</p>
+<blockquote class="last">
+<div><p># note: doc1 is always the document from which substrings are taken
+#print &#8220;K_Prime() Started!&#8221;
+total = 0.0
+substring = doc1.generateConsecutiveSubstring(n)
+while substring != &#8220;&#8221;:</p>
+<blockquote>
+<div><p>print &#8220;Working on substring &#8220;&#8221;, substring, &#8220;&#8221;&#8221;
+lofS = Compare.calculatePrimeLength(substring, doc1)
+if lofS == 0:</p>
+<blockquote>
+<div>substring = doc1.generateConsecutiveSubstring(n)
+continue</div></blockquote>
+<p>lofT = Compare.calculatePrimeLength(substring, doc2)
+if lofT == 0:</p>
+<blockquote>
+<div>substring = doc1.generateConsecutiveSubstring(n)
+continue</div></blockquote>
+<p>total += math.pow(lambd, lofS + lofT)
+#print &#8220;Running total: &#8221;, total
+substring = doc1.generateConsecutiveSubstring(n)</p>
+</div></blockquote>
+<p>return total</p>
+</div></blockquote>
+</dd>
+</dl>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/v0.1/compare-0.1.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, John Walnut, Tyrus Berry, Lincoln Mullin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/v0.1/compare-0.1.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

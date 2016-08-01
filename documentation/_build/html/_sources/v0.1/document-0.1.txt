@@ -1,0 +1,41 @@
+# John Walnut
+# v 0.1
+# Document class will wrap any document we want to compare
+# 6/27/16
+
+class Document:
+    def __init__(self, meta = "", body = ""):
+        self.body = body
+        self.meta = "" #Might be useful for metadata later
+        self.length = len(body)
+        self.totalSubstrings = -1
+
+    def __str__(self):
+        return self.body
+    
+    def generateConsecutiveSubstring(self, subLength = 5):
+        # v 0.1
+        # currently generates consecutive strings (that is, with no interior characters)
+        
+        # todo: account for multiple calls with different subLength arguments
+
+        if self.totalSubstrings == -1:
+            self.totalSubstrings = self.length - subLength
+        elif self.totalSubstrings == 0:
+            return ""
+        else:
+            self.totalSubstrings -= 1
+        
+        total = self.length - subLength
+        startingChar = total - self.totalSubstrings
+
+        return self.body[startingChar:startingChar + subLength]
+    
+    def generateSubstring(self, subLength = 5):
+        # v 0.1
+        # this is the more correct substring generator.  I left the old one intact, in case we wanted to use it later
+        print "test"
+
+    def resetSubstring(self):
+        self.totalSubstrings = -1
+    

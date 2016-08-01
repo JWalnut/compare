@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; wordmap 0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="wordmap 0.0 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p># John Walnut
+# v 0.2
+# Contains all methods and code for comparing two documents
+# 7/8/16</p>
+<p>from document import Document
+import math</p>
+<p>class Compare(object):</p>
+<blockquote>
+<div><p>&#64;staticmethod
+def calculatePrimeLength(substring, document): #calculates to end of document (I&#8217;m calling it l&#8217;(s))</p>
+<blockquote>
+<div><p># todo: incorrect type handling
+finalLength = document.length
+first = substring[:1]
+firstIndex = document.body.rfind(substring[:1])
+if firstIndex == -1:</p>
+<blockquote>
+<div>return 0</div></blockquote>
+<p>nextIndex = firstIndex+1
+nextChar = 1
+while nextChar &lt; len(substring):</p>
+<blockquote>
+<div><p>tmp = document.body.rfind(substring[nextChar:nextChar+1], nextIndex)
+if tmp == -1:</p>
+<blockquote>
+<div>return 0</div></blockquote>
+<p>nextChar += 1</p>
+</div></blockquote>
+<p>return document.length - firstIndex + 1</p>
+</div></blockquote>
+<p>&#64;staticmethod
+def calculateLength(substring, document): #calculates to end of substring (l(s) as in paper)</p>
+<blockquote>
+<div><p># todo: incorrect type handling
+finalLength = document.length
+first = substring[:1]
+firstIndex = document.body.rfind(substring[:1])
+if firstIndex == -1:</p>
+<blockquote>
+<div>return 0</div></blockquote>
+<p>nextIndex = firstIndex+1
+nextChar = 1
+tmp = 0
+while nextChar &lt; len(substring):</p>
+<blockquote>
+<div><p>tmp = document.body.rfind(substring[nextChar:nextChar+1], nextIndex)
+if tmp == -1:</p>
+<blockquote>
+<div>return 0</div></blockquote>
+<p>nextChar += 1</p>
+</div></blockquote>
+<p>return tmp - firstIndex + 1</p>
+</div></blockquote>
+<p>&#64;staticmethod
+def K_Prime(doc1, doc2, n, lambd = 0.5):</p>
+<blockquote>
+<div><p>#print &#8220;K&#8217;_&#8221;, n, &#8220;(&#8220;&#8221;, doc1.body, &#8220;&#8221;,&#8221;&#8221;, doc2.body, &#8220;&#8221;)&#8221;</p>
+<p>#Total to return later
+total = 0.0</p>
+<p>#Base Cases
+if n == 0:</p>
+<blockquote>
+<div>return 1</div></blockquote>
+<dl class="docutils">
+<dt>if min(doc1.length, doc2.length) &lt; n:</dt>
+<dd>return 0</dd>
+</dl>
+<p>#First Recursive Call
+doc_s = Document(body = doc1.body[:doc1.length-1]) #Peel last character off of &#8220;S&#8221;
+total += lambd*Compare.K_Prime(doc_s, doc2, n, lambd)</p>
+<p>#Second Recursive Call
+lastchar = doc1.body[doc1.length-1:] #Grab last character of &#8220;S&#8221;
+charIndex = doc2.body.find(lastchar) #Find that character in &#8220;T&#8221;
+while charIndex != -1: #For every instance of the last character of &#8220;S&#8221; found in &#8220;T&#8221;...</p>
+<blockquote>
+<div>doc_t = Document(body = doc2.body[:charIndex]) #Grab &#8220;T&#8221; up to (but not including) that character
+total += math.pow(lambd, doc2.length - charIndex + 1)*Compare.K_Prime(doc_s, doc_t, n-1, lambd) #Call K_Prime at one less level of &#8220;n&#8221;
+charIndex = doc1.body.find(lastchar, charIndex+1, doc1.length) #Find next occurance of character in &#8220;T&#8221;</div></blockquote>
+<p>#print &#8220;Recursion on K&#8217;_&#8221;, n, &#8220;(&#8220;&#8221;, doc1.body, &#8220;&#8221;,&#8221;&#8221;, doc2.body, &#8220;&#8221;) complete!  Total += &#8221;, total
+return total</p>
+</div></blockquote>
+<p>&#64;staticmethod
+def K(doc1, doc2, n, lambd=0.5):</p>
+<blockquote>
+<div><blockquote>
+<div><p>#Total to return later
+total = 0.0</p>
+<p>#Base Cases
+if n == 0:</p>
+<blockquote>
+<div>return 1</div></blockquote>
+<dl class="docutils">
+<dt>if min(doc1.length, doc2.length) &lt; n:</dt>
+<dd>return 0</dd>
+</dl>
+<p>#First Recursive Call
+doc_s = Document(body = doc1.body[:doc1.length-1]) #Peel last character off of &#8220;S&#8221;
+total += Compare.K(doc_s, doc2, n, lambd)</p>
+<p>#Second Recursive Call
+lastchar = doc1.body[doc1.length-1:] #Grab last character of &#8220;S&#8221;
+charIndex = doc2.body.find(lastchar) #Find that character in &#8220;T&#8221;
+while charIndex != -1: #For every instance of the last character of &#8220;S&#8221; found in &#8220;T&#8221;...</p>
+<blockquote>
+<div>doc_t = Document(body = doc2.body[:charIndex]) #Grab &#8220;T&#8221; up to (but not including) that character
+total += math.pow(lambd, 2)*Compare.K_Prime(doc_s, doc_t, n-1, lambd) #Call K_Prime at one less level of &#8220;n&#8221;
+charIndex = doc1.body.find(lastchar, charIndex+1, doc1.length) #Find next occurance of character in &#8220;T&#8221;</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt># print &#8220;Recursion on K&#8217;_&#8221;, n, &#8220;(&#8220;&#8221;, doc1.body, &#8220;&#8221;,&#8221;&#8221;, doc2.body, &#8220;&#8221;) complete!  Total += &#8221;, total</dt>
+<dd>return total</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/compare.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, John Walnut, Tyrus Berry, Lincoln Mullin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/compare.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

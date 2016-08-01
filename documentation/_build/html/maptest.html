@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; wordmap 0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="wordmap 0.0 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>from document import Document
+from wordmap import WordMap as wm
+import networkx as nx
+from nltk.corpus import brown
+import matplotlib.pyplot as plot
+import numpy as np</p>
+<p>#documentString = &#8220;&#8221;
+#for i in range(500):
+#    documentString += brown.words()[i]
+#    documentString += &#8221; &#8220;</p>
+<p>#theDoc = Document(body=documentString)</p>
+<p>#theMap = wm.generateWordMap(theDoc)</p>
+<p>#nx.draw_random(theMap, with_labels=True)
+#plot.show()</p>
+<p>doc1 = Document(body=&#8221;The distinction between actions at law and suits in equity, and the forms of all such actions and suits, heretofore existing, are abolished; and, there shall be in this state, hereafter, but one form of action, for the enforcement or protection of private rights and the redress or prevention of private wrongs, which shall be denominated a civil action.&#8221;)
+doc2 = Document(body=&#8221;In a suit for the recovery of money only, the defendant having answered, may serve upon the plaintifff or his attorney, an offer in writing, that, if he fail in his defense, the amount of the recovery shall be assessed at a specified sum.  If the plaintifff accept the offer and give notice thereof to the defendant or his attorney within five days after it is served, and the defendant fail in his defense, the judgment shall be for the amount so agreed upon.  If the plaintifff do not accept the offer, he shall prove the amount to be recovered, as if the offer had not been made; the offer shall not be given in evidence or mentioned on the trial; and if the amount recovered by the plaintifff do not exceed the sum mentioned in the offer, the defendant shall recover his costs incurred in the defense in respect to the question of amount, to be taxed under the direction of the Court.&#8221;)</p>
+<p>print wm.compareDocs(doc1, doc2)</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/maptest.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, John Walnut, Tyrus Berry, Lincoln Mullin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/maptest.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

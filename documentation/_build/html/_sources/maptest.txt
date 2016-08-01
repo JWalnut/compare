@@ -1,0 +1,25 @@
+from document import Document
+from wordmap import WordMap as wm
+import networkx as nx
+from nltk.corpus import brown
+import matplotlib.pyplot as plot
+import numpy as np
+
+
+#documentString = ""
+#for i in range(500):
+#    documentString += brown.words()[i]
+#    documentString += " "
+
+#theDoc = Document(body=documentString)
+
+#theMap = wm.generateWordMap(theDoc)
+
+#nx.draw_random(theMap, with_labels=True)
+#plot.show()
+
+
+doc1 = Document(body="The distinction between actions at law and suits in equity, and the forms of all such actions and suits, heretofore existing, are abolished; and, there shall be in this state, hereafter, but one form of action, for the enforcement or protection of private rights and the redress or prevention of private wrongs, which shall be denominated a civil action.")
+doc2 = Document(body="In a suit for the recovery of money only, the defendant having answered, may serve upon the plaintifff or his attorney, an offer in writing, that, if he fail in his defense, the amount of the recovery shall be assessed at a specified sum.  If the plaintifff accept the offer and give notice thereof to the defendant or his attorney within five days after it is served, and the defendant fail in his defense, the judgment shall be for the amount so agreed upon.  If the plaintifff do not accept the offer, he shall prove the amount to be recovered, as if the offer had not been made; the offer shall not be given in evidence or mentioned on the trial; and if the amount recovered by the plaintifff do not exceed the sum mentioned in the offer, the defendant shall recover his costs incurred in the defense in respect to the question of amount, to be taxed under the direction of the Court.")
+
+print wm.compareDocs(doc1, doc2)

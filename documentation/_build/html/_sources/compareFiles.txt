@@ -1,0 +1,30 @@
+import sys
+from document import Document
+from wordmap import WordMap as wm
+
+doclist = []
+
+quiet=False
+
+if not sys.argv[1].isdigit():
+    print "Usage: python compareFiles.py <compare_depth> [-q] <files_to_compare...>"
+    sys.exit()
+
+for file in sys.argv:
+    if file == "compareFiles.py" or file.isdigit():
+        continue;
+    if file == "-q":
+        quiet=True
+        continue
+    theFile = open(file, "r")
+    doclist.append(Document(body=theFile.read(), title=file))
+
+for document in doclist:
+    for document1 in doclist:
+        if document == document1:
+            continue
+        if not quiet:
+            print "Comparison of ", document.title, " with ", document1.title
+            print wm.compareDocs(document, document1, sys.argv[1], quiet)
+        else:
+            print "Comparison of ", document.title, " with ", document1.title, ": ", wm.compareDocs(document, document1, sys.argv[1], quiet)
