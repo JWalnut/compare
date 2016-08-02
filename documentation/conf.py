@@ -54,8 +54,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'[name tbd]'
-copyright = u'2016, John Walnut, Tyrus Berry, Lincoln Mullin'
-author = u'John Walnut, Tyrus Berry, Lincoln Mullin'
+copyright = u'2016, John Walnut, Tyrus Berry, Lincoln Mullen'
+author = u'John Walnut, Tyrus Berry, Lincoln Mullen'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
