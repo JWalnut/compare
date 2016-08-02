@@ -23,7 +23,7 @@ def synonymList(word): #Helper method to generate a list of synonyms using Princ
     #Duplicate matches are ignored
     #Optional progress bar for map generation (default is on).  Quiet option turns off
 
-def generateWordMap(doc, quiet=False):
+def generateWordMap(doc, quiet=False, synCount=False):
     i = 0
     map = nx.Graph()
     docSet = set(doc.wordlist)
@@ -73,9 +73,9 @@ def generateDocumentVector(allWords, document, count=False):
     #Depth determines how many times the document vectors are multiplied by the markov matrix (0 = once)
     #Quiet determines whether wordmap generation should show progress bar
     #Count determines whether word vectors should count words, or indicate presence alone
-def compareDocs(doc1, doc2, depth=0, quiet=False, count=False):
+def compareDocs(doc1, doc2, depth=0, quiet=False, count=False, synCount=False):
     markovDoc = Document(body=doc1.body+" "+doc2.body)
-    markovMap = generateWordMap(markovDoc, quiet)
+    markovMap = generateWordMap(markovDoc, quiet, synCount)
     markov = generateMarkov(markovMap)
     doc1vec = generateDocumentVector(markovDoc, doc1, count)
     doc2vec = generateDocumentVector(markovDoc, doc2, count)
@@ -89,7 +89,7 @@ def compareDocs(doc1, doc2, depth=0, quiet=False, count=False):
     return np.sum(np.absolute(S1.transpose()[0] - S2.transpose()[0]))
         
     #Compares all documents in a given folder, outputting a matrix of their similarities
-def compareFolderDocs(folder, depth=0, quiet=False, drawMap=False, count=False):
+def compareFolderDocs(folder, depth=0, quiet=False, drawMap=False, count=False, synCount=False):
     doclist = [];
     allBody = [];
     allDocs = listdir(folder)
@@ -102,7 +102,7 @@ def compareFolderDocs(folder, depth=0, quiet=False, drawMap=False, count=False):
         doclist.append(Document(body=iBody,title=file))
         allBody = allBody+" "+iBody
     markovDoc = Document(body=allBody)
-    markovMap = generateWordMap(markovDoc, quiet)
+    markovMap = generateWordMap(markovDoc, quiet, synCount)
     if (drawMap):
         plt.plot(nx.draw_networkx(markovMap,show_labels=1))
         plt.show()

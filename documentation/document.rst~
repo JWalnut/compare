@@ -24,7 +24,7 @@ Fields
 
       .. py:attribute:: file
       	 
-	 String containing the path to the file from which the document is generated (see :py:meth:`Document`)
+	 String containing the path to the file from which the document is generated (see :py:meth:`__init__`)
 
       .. py:attribute:: wordlist
 
@@ -45,7 +45,7 @@ Fields
 Methods
 -------
 
-   .. py:method:: Document(self, file = "", title = "Untitled", body = "")
+   .. py:method:: __init__(self, file = "", title = "Untitled", body = "")
 
       Constructor.  See fields_ for parameter description.  If :py:attr:`file` is specified, document is generated from file.
 

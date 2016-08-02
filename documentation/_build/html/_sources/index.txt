@@ -15,6 +15,7 @@ Contents:
 
    wordmap
    document   
+   ngram
 
 Indices and tables
 ==================

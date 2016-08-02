@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ngram &mdash; [name tbd] 0.3 alpha documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3 alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="[name tbd] 0.3 alpha documentation" href="index.html" />
+    <link rel="prev" title="Document" href="document.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ngram">
+<h1>ngram<a class="headerlink" href="#ngram" title="Permalink to this headline">¶</a></h1>
+<p><em>Still can&#8217;t figure out how it&#8217;s computationally efficient...</em></p>
+<span class="target" id="module-compare.func.ngram"></span><dl class="staticmethod">
+<dt id="compare.func.ngram.calculatePrimeLength">
+<em class="property">static </em><code class="descclassname">compare.func.ngram.</code><code class="descname">calculatePrimeLength</code><span class="sig-paren">(</span><em>substring</em>, <em>document</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.ngram.calculatePrimeLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates length of substring from first character to end of document</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>substring</strong> (<em>String</em>) &#8211; Substring to search for</li>
+<li><strong>document</strong> (<a class="reference internal" href="document.html#compare.classes.Document" title="compare.classes.Document"><em>Document</em></a>) &#8211; Document to search through</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="compare.func.ngram.calculateLength">
+<em class="property">static </em><code class="descclassname">compare.func.ngram.</code><code class="descname">calculateLength</code><span class="sig-paren">(</span><em>substring</em>, <em>document</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.ngram.calculateLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates length of substring from first character to end of character</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>substring</strong> (<em>String</em>) &#8211; Substring to search for</li>
+<li><strong>document</strong> (<a class="reference internal" href="document.html#compare.classes.Document" title="compare.classes.Document"><em>Document</em></a>) &#8211; Document to search through</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="compare.func.ngram.K_Prime">
+<em class="property">static </em><code class="descclassname">compare.func.ngram.</code><code class="descname">K_Prime</code><span class="sig-paren">(</span><em>doc1</em>, <em>doc2</em>, <em>n</em>, <em>lambd=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.ngram.K_Prime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates K&#8217; recursively (as in paper)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>doc1</strong> &#8211; First document</li>
+<li><strong>doc2</strong> &#8211; Second document</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Finish documenting this module</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="document.html" title="previous chapter">Document</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ngram.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, John Walnut, Tyrus Berry, Lincoln Mullin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/ngram.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
