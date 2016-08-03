@@ -99,7 +99,7 @@ def compareFolderDocs(folder, depth=0, quiet=False, drawMap=False, count=False, 
     for i in range(N):
         iFile = open(folder+"/"+allDocs[i],"r")
         iBody = iFile.read()
-        doclist.append(Document(body=iBody,title=file))
+        doclist.append(Document(body=iBody,title=allDocs[i]))
         allBody = allBody+" "+iBody
     markovDoc = Document(body=allBody)
     markovMap = generateWordMap(markovDoc, quiet, synCount)

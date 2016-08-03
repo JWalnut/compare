@@ -1,0 +1,8 @@
+setup.py
+compare/__init__.py
+compare.egg-info/PKG-INFO
+compare.egg-info/SOURCES.txt
+compare.egg-info/dependency_links.txt
+compare.egg-info/not-zip-safe
+compare.egg-info/requires.txt
+compare.egg-info/top_level.txt
