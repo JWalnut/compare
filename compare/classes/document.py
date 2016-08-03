@@ -77,7 +77,7 @@ class Document:
     def generateSubstring(self, subLength = 5): #This method deprecated as of v0.2
         # v 0.1
         # this is the more correct substring generator.  I left the old one intact, in case we wanted to use it later
-        print "test"
+        print("test")
 
     def resetSubstring(self): #This method deprecated as of v0.2
         self.totalSubstrings = -1
