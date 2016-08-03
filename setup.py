@@ -1,6 +1,8 @@
 from setuptools import setup
 import nltk
 
+# in command prompt: "python setup.py develop"
+
 setup(name='compare',
       version='0.4',
       description='Document Comparison',
