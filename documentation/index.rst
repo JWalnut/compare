@@ -16,6 +16,7 @@ Contents:
    wordmap
    document   
    ngram
+   corpus
 
 Indices and tables
 ==================

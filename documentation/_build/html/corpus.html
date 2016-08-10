@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Corpus &mdash; [name tbd] 0.3 alpha documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3 alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="[name tbd] 0.3 alpha documentation" href="index.html" />
+    <link rel="prev" title="ngram" href="ngram.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="corpus">
+<h1>Corpus<a class="headerlink" href="#corpus" title="Permalink to this headline">¶</a></h1>
+<p><em>A wrapper class</em></p>
+<span class="target" id="module-compare.classes.corpus"></span><dl class="class">
+<dt id="compare.classes.corpus.Corpus">
+<em class="property">class </em><code class="descclassname">compare.classes.corpus.</code><code class="descname">Corpus</code><span class="sig-paren">(</span><em>self</em>, <em>folder = &quot;&quot;</em>, <em>title = &quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.classes.corpus.Corpus" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to wrap many of the document comparison methods, so that comparisons may be
+done multiple times on the same set of data.</p>
+</dd></dl>
+
+<div class="section" id="fields">
+<span id="id1"></span><h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="attribute">
+<dt id="compare.classes.corpus.folder">
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">folder</code><a class="headerlink" href="#compare.classes.corpus.folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds the path to the folder containing all of the comparable files</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.corpus.title">
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">title</code><a class="headerlink" href="#compare.classes.corpus.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple identifier for the object.  Defaults to equal <a class="reference internal" href="#compare.classes.corpus.folder" title="compare.classes.corpus.folder"><code class="xref py py-attr docutils literal"><span class="pre">folder</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.corpus.doclist">
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">doclist</code><a class="headerlink" href="#compare.classes.corpus.doclist" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of <code class="xref py py-class docutils literal"><span class="pre">Document</span></code> objects containing the documents to be compared</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.corpus.wordlist">
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">wordlist</code><a class="headerlink" href="#compare.classes.corpus.wordlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of all of the words in all of the given documents</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.corpus.corpuswordmap">
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">corpuswordmap</code><a class="headerlink" href="#compare.classes.corpus.corpuswordmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <em>NetworkX</em> graph to hold the wordmap of the folder of documents</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.corpus.markov">
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">markov</code><a class="headerlink" href="#compare.classes.corpus.markov" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <em>NumPy</em> array to hold the Markov matrix generated from the folder of documents</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.corpus.meta">
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">meta</code><a class="headerlink" href="#compare.classes.corpus.meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>A structure holding metadata about the documents to be compared</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Once again, necessary?</p>
+</div>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="methods">
+<span id="id2"></span><h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For most methods, see <code class="xref py py-mod docutils literal"><span class="pre">wordmap</span></code> for implementation.</p>
+</div>
+<dl class="method">
+<dt>
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">Corpus</code><span class="sig-paren">(</span><em>self</em>, <em>folder = &quot;&quot;</em>, <em>title = &quot;&quot;</em><span class="sig-paren">)</span></dt>
+<dd><p>Constructor.  See <a class="reference internal" href="#fields">fields</a> for parameter description.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="compare.classes.corpus.addFolder">
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">addFolder</code><span class="sig-paren">(</span><em>self</em>, <em>foldertoadd = &quot;&quot;</em>, <em>quiet = True</em>, <em>drawMap = False</em>, <em>synCount = False</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.classes.corpus.addFolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a folder of documents to be compared into the object, and generates a wordmap
+from those documents and the markov matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>foldertoadd</strong> (<em>String</em>) &#8211; Path to the folder containing comparable documents</li>
+<li><strong>quiet</strong> (<em>Boolean</em>) &#8211; Toggle status bar when generating wordmap</li>
+<li><strong>drawMap</strong> (<em>Boolean</em>) &#8211; Toggle graphical drawing of generated wordmap</li>
+<li><strong>synCount</strong> (<em>Boolean</em>) &#8211; Toggle graph weights based on how frequently WordNet gives it as a synonym</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="compare.classes.corpus.compareCorpus">
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">compareCorpus</code><span class="sig-paren">(</span><em>self</em>, <em>depth = 0</em>, <em>count = False</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.classes.corpus.compareCorpus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares all of the documents loaded into the object, and returns a matrix of their pairwise distances
+See <code class="xref py py-meth docutils literal"><span class="pre">wordmap.compare()</span></code></p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Corpus</a><ul>
+<li><a class="reference internal" href="#fields">Fields</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ngram.html" title="previous chapter">ngram</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/corpus.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, John Walnut, Tyrus Berry, Lincoln Mullen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/corpus.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
