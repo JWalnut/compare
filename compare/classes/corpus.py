@@ -12,6 +12,7 @@ from nltk.corpus import wordnet as wn
 from .document import Document
 import string
 import  platform
+import matplotlib.pyplot as plt
 MetaData = namedtuple("MetaData", "title length wordcount") #Python equivalent of C-Style "struct" for metadata.  Requires separate "import" to use on its own
 
 class Corpus:
@@ -23,12 +24,13 @@ class Corpus:
         self.doclist = list()
         self.wordlist = list()
         self.corpuswordmap = nx.Graph()
+        self.sparsemap = nx.Graph()
         self.markov = []
         if not folder == "": #If filename is provided, create document from file (will only work with plain text files)
             self.addfolder(folder)
             if title == "": #If not given title directly, set title to filename (sans extension)
                 self.title = folder
-        #Metadata
+#Metadata
         self.meta = MetaData(title = self.title, length = self.length, wordcount = len(self.wordlist))
 
     # Magic Methods
@@ -64,7 +66,9 @@ class Corpus:
                         if synCount:
                             self.corpuswordmap.add_edge(word, syn,weight=synonyms.count(syn))  
                         else:
-                            self.corpuswordmap.add_edge(word, syn)                           
+                            self.corpuswordmap.add_edge(word, syn)
+                        if not word == syn:
+                            self.sparsemap.add_edge(word, syn)
             i += 1
             if not quiet:
                 bar.update(i) 
@@ -137,3 +141,11 @@ class Corpus:
                 allDist[i,j] = np.sum(np.absolute(S1.transpose()[0] - S2.transpose()[0]))
                 allDist[j,i] = allDist[i,j]
         return allDist
+
+    def showMap(self, allNodes=True):
+        if allNodes:
+            plt.plot(nx.draw_networkx(self.corpuswordmap,show_labels=1))
+            plt.show()
+        else:
+            plt.plot(nx.drawing.layoutruchterman_reingold_layout(self.sparsemap, show_labels=1))
+            plt.show()

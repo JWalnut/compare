@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="[name tbd] 0.3 alpha documentation" href="index.html" />
+    <link rel="next" title="datascience" href="datascience.html" />
     <link rel="prev" title="ngram" href="ngram.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -42,7 +43,7 @@
             
   <div class="section" id="corpus">
 <h1>Corpus<a class="headerlink" href="#corpus" title="Permalink to this headline">¶</a></h1>
-<p><em>A wrapper class</em></p>
+<p><em>A big hefty wrapper class</em></p>
 <span class="target" id="module-compare.classes.corpus"></span><dl class="class">
 <dt id="compare.classes.corpus.Corpus">
 <em class="property">class </em><code class="descclassname">compare.classes.corpus.</code><code class="descname">Corpus</code><span class="sig-paren">(</span><em>self</em>, <em>folder = &quot;&quot;</em>, <em>title = &quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.classes.corpus.Corpus" title="Permalink to this definition">¶</a></dt>
@@ -81,6 +82,13 @@ done multiple times on the same set of data.</p>
 <dt id="compare.classes.corpus.corpuswordmap">
 <code class="descclassname">compare.classes.corpus.</code><code class="descname">corpuswordmap</code><a class="headerlink" href="#compare.classes.corpus.corpuswordmap" title="Permalink to this definition">¶</a></dt>
 <dd><p>A <em>NetworkX</em> graph to hold the wordmap of the folder of documents</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.corpus.sparsemap">
+<code class="descclassname">compare.classes.corpus.</code><code class="descname">sparsemap</code><a class="headerlink" href="#compare.classes.corpus.sparsemap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subgraph of <a class="reference internal" href="#compare.classes.corpus.corpuswordmap" title="compare.classes.corpus.corpuswordmap"><code class="xref py py-attr docutils literal"><span class="pre">corpuswordmap</span></code></a> containing only those nodes that connect to other nodes.  That is,
+excluding nodes that only map to themselves.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -142,6 +150,20 @@ from those documents and the markov matrix.</p>
 See <code class="xref py py-meth docutils literal"><span class="pre">wordmap.compare()</span></code></p>
 </dd></dl>
 
+<dl class="method">
+<dt>
+<code class="descname">showMap(self, allNodes=True):</code></dt>
+<dd><p>Uses <em>matplotlib</em> to display the wordmap.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>allNodes</strong> (<em>Boolean</em>) &#8211; If &#8220;allNodes&#8221; is True, displays <a class="reference internal" href="#compare.classes.corpus.corpuswordmap" title="compare.classes.corpus.corpuswordmap"><code class="xref py py-attr docutils literal"><span class="pre">corpuswordmap</span></code></a>.  If false, <a class="reference internal" href="#compare.classes.corpus.sparsemap" title="compare.classes.corpus.sparsemap"><code class="xref py py-attr docutils literal"><span class="pre">sparsemap</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div></blockquote>
 </div>
 </div>
@@ -165,6 +187,7 @@ See <code class="xref py py-meth docutils literal"><span class="pre">wordmap.com
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="ngram.html" title="previous chapter">ngram</a></li>
+      <li>Next: <a href="datascience.html" title="next chapter">datascience</a></li>
   </ul></li>
 </ul>
 </div>

@@ -1,7 +1,7 @@
 Corpus
 ======
 
-*A wrapper class*
+*A big hefty wrapper class*
 
 .. py:module:: compare.classes.corpus
 
@@ -35,6 +35,11 @@ Fields
 	.. py:attribute:: corpuswordmap
 
 	   A *NetworkX* graph to hold the wordmap of the folder of documents
+
+	.. py:attribute:: sparsemap
+
+	   Subgraph of :py:attr:`corpuswordmap` containing only those nodes that connect to other nodes.  That is,
+	   excluding nodes that only map to themselves.
 
 	.. py:attribute:: markov
 
@@ -75,3 +80,10 @@ Methods
 
       Compares all of the documents loaded into the object, and returns a matrix of their pairwise distances
       See :py:meth:`wordmap.compare`
+
+   .. py:method:: showMap(self, allNodes=True):
+
+      Uses *matplotlib* to display the wordmap.
+
+      :param allNodes: If "allNodes" is True, displays :py:attr:`corpuswordmap`.  If false, :py:attr:`sparsemap`
+      :type allNodes: Boolean

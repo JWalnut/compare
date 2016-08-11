@@ -17,6 +17,7 @@ Contents:
    document   
    ngram
    corpus
+   datascience
 
 Indices and tables
 ==================
