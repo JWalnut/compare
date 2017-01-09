@@ -12,16 +12,21 @@ def pca(simMatrix, k=1):
     simMatrix = simMatrix - simMatrix.mean(axis=0)
     #Calculate covariance matrix
     cov = numpy.cov(simMatrix.T)
-    #Singular value decomposition
-    S,U = np.eig(cov)
-    #Compute percentage of variance in each principal component
-    S = S/sum(S)
-    #Pull eigenvectors (number depends on "k"
-    evecs = U[:, 0:k]
+    #Calculate eigenvectors and eigenvalues of the covariance matrix
+    eVal,eVec = np.eig(cov)
+    #Sort eigenvectors by eigenvalues
+    indexArray = numpy.argsort(eVal)
+    evecs = numpy.zeros_like(eVec)
+    i=0
+    for value in numpy.nditer(indexArray):
+        evecs[:, evecs.shape[0]-1-value] = eVec[:, i]
+        i += 1
+    #Pull eigenvectors (number depends on "k") & evaluate
+    evecs = evecs[:, 0:k]
     Z = evecs.T.dot(simMatrix.T)
-    return Z,S
+    return Z.T,numpy.sort(eVal)[::-1]
 
-# pca based on the covariance matrix
+# pca based on the singular value decomposition
 def svdpca(data, k=1):
     #Center the matrix
     data = data - data.mean(axis=0)
@@ -35,5 +40,5 @@ def svdpca(data, k=1):
     Z = evecs.T.dot(data.T)
     return Z, S
 
-def mmds(matrix):
-    return 0
+def mmds(matrix, k=1):
+    

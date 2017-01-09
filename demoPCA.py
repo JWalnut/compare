@@ -40,6 +40,3 @@ print(S)[0:3]
 ax.scatter(Xpca[0],Xpca[1],Xpca[2],c='None',marker='o',edgecolor='r',s=50)
 
 plt.show()
-
-
-

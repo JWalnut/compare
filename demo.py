@@ -1,13 +1,15 @@
 from compare.func import wordmap as wm
 from compare.classes import Document
 from compare.classes import Corpus
+from compare.func import datascience as sci
+import numpy
 
-myCP = Corpus("LegalDocs")
+#tests the pca function on data from Lindsay Smith's "Tutorial on Principal Component Analysis"
+x = numpy.array([[0, 3.47, 1.79, 3.00, 2.67, 2.58, 2.22, 3.08],
+                 [])
+x = x.T
 
-print(myCP.compareCorpus())
+pcaMatrix,eVals = sci.pca(x)
 
-# doc = Document("test.txt")
-A = wm.compareFolderDocs("LegalDocs",quiet=True)
-
-print(A)
-
+print pcaMatrix
+print eVals
