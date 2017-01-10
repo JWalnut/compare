@@ -60,6 +60,7 @@ def isSymmetric(matrix):
     return True
 
 def mmds(distanceMatrix):
+    print "Distance Matrix\n", distanceMatrix
     size = float(distanceMatrix.shape[0])
     #Create the Gram matrix from the distance matrix
     massVector = numpy.full((1, size), (1/size))
@@ -80,5 +81,5 @@ def mmds(distanceMatrix):
     #scoresMat = numpy.identity(gramMat.shape[0], distanceMatrix.shape[0])
     scoresMat = lambd
     scoresMat = scoresMat.dot(distanceMatrix.T)
-    print "\n\n"
+    #print "\n\n"
     return scoresMat
