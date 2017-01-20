@@ -72,25 +72,27 @@ def isSymmetric(matrix):
                 return False
     return True
 
-def orderedEig(matrix, removeZeros = False):
+def orderedEig(matrix, labelsMatrix = None, stripNegatives = True):
     eVals,eVecs = np.eig(matrix)
     eVals = removeArtifacts(eVals)
     eVecs = removeArtifacts(eVecs)
-    for i in range(0, eVals.size):
-        if (removeZeros == True and eVals[i] == 0):
-            eVals = numpy.delete(eVals, [i])
-            eVecs = numpy.delete(eVecs, i, 1)
     
-    indexArray = list(numpy.argsort(eVals))[::-1]
+    posEVals = []
+    for i in range(0, eVals.size):
+        if (stripNegatives == True and eVals[i] > 0):
+            posEVals.append(eVals[i])
+    
+    print posEVals
+    posEVals = numpy.array(posEVals)
+    indexArray = list(numpy.argsort(posEVals))[::-1]
 
-    print eVals
-    evecs = numpy.zeros_like(eVecs)
-    evals = numpy.zeros_like(eVals)
+    evecs = numpy.zeros((eVecs.shape[0], posEVals.size))
+    evals = numpy.zeros_like(posEVals)
 
     i=0
     for value in indexArray:
         evecs[:, i] = eVecs[:, value]
-        evals[i] = eVals[value]
+        evals[i] = posEVals[value]
         i += 1
     return evals,evecs
     
