@@ -42,7 +42,7 @@ def svdpca(data, k=1):
     return Z, S
 
 def generateDistanceMatrix(matrix):
-    dmat = numpy.zeros_like(matrix.reshape(matrix.shape[0], matrix.shape[0]))
+    dmat = numpy.zeros((matrix.shape[0], matrix.shape[0]))
     for i in range(0, matrix.shape[0]-1):
         for j in range(i+1, matrix.shape[0]):
             sum = 0
@@ -52,6 +52,19 @@ def generateDistanceMatrix(matrix):
             dmat[j, i] = sum
     return dmat
 
+#removes values smaller than tolerance from matrix
+def removeArtifacts(matrix, tolerance=float(10e-10)):
+    if (len(matrix.shape) == 1):
+        for i in range(0, matrix.size):
+            if (math.fabs(matrix[i]) < tolerance):
+                matrix[i] = 0
+    else:
+        for i in range(0, matrix.shape[0]):
+            for j in range(0, matrix.shape[1]):
+                if (math.fabs(matrix[i,j]) < tolerance):
+                    matrix[i,j] = 0
+    return matrix
+
 def isSymmetric(matrix):
     for i in range(0, matrix.shape[1]):
         for j in range(0, i+1):
@@ -59,27 +72,39 @@ def isSymmetric(matrix):
                 return False
     return True
 
-def mmds(distanceMatrix):
-    print "Distance Matrix\n", distanceMatrix
-    size = float(distanceMatrix.shape[0])
-    #Create the Gram matrix from the distance matrix
-    massVector = numpy.full((1, size), (1/size))
-    print "\n\nmassVector\n", massVector
-    centerMatrix = numpy.identity(size) - numpy.ones((size, 1)).dot(massVector)
-    print "\n\ncenterMatrix\n", centerMatrix
-    gramMat = (-0.5)*centerMatrix.dot(distanceMatrix).dot(centerMatrix)
-    print "\n\ngramMatrix\n", gramMat
-    #Perform eigen-decomposition
-    eVals,eVecs = np.eig(gramMat)
-    print "\n\neigenVectors\n", eVecs
-    #Create diagonal matrix of eigenvalues
-    lambd = numpy.diag(eVals)
-    print "\n\nlambd\n", lambd
-    lambd = numpy.sqrt(lambd)
-    print "\n\nlambd^(1/2)\n", lambd
-    #Create euclidean points matrix
-    #scoresMat = numpy.identity(gramMat.shape[0], distanceMatrix.shape[0])
-    scoresMat = lambd
-    scoresMat = scoresMat.dot(distanceMatrix.T)
-    #print "\n\n"
-    return scoresMat
+def orderedEig(matrix, removeZeros = False):
+    eVals,eVecs = np.eig(matrix)
+    eVals = removeArtifacts(eVals)
+    eVecs = removeArtifacts(eVecs)
+    for i in range(0, eVals.size):
+        if (removeZeros == True and eVals[i] == 0):
+            eVals = numpy.delete(eVals, [i])
+            eVecs = numpy.delete(eVecs, i, 1)
+    
+    indexArray = numpy.argsort(eVals)
+
+    evecs = numpy.zeros_like(eVecs)
+    evals = numpy.zeros_like(eVals)
+
+    i=0
+    for value in numpy.nditer(indexArray):
+        evecs[:, value] = eVecs[:, i]
+        evals[value] = eVals[i]
+        i += 1
+    return evals,evecs
+    
+def mmds(distanceMatrix): #must be matrix of squared distances
+    pointsCount = float(distanceMatrix.shape[0])
+    centeringMatrix = numpy.identity(pointsCount) - (1/pointsCount)*numpy.ones((pointsCount, pointsCount))
+
+    gramMatrix = (-0.5)*centeringMatrix.dot(distanceMatrix).dot(centeringMatrix)
+    gramMatrix = removeArtifacts(gramMatrix)
+
+    eVals,eVecs = orderedEig(gramMatrix)
+    eVals = removeArtifacts(eVals)
+    eVecs = removeArtifacts(eVecs)
+
+    lambdaMatrix = numpy.diag(eVals)
+    rootLambdaMatrix = numpy.sqrt(lambdaMatrix)
+    
+    return rootLambdaMatrix.dot(eVecs.T).T

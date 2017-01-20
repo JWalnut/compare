@@ -6,14 +6,11 @@
 import numpy
 import matplotlib.pyplot as plt
 
-def plotCoordinatesMatrix(matrix):
-    pertinentDimensions = 2
-    if (len(matrix.shape) > 2):
-        print "Matrix is ", len(matrix.shape), " dimensional.  Pulling only first 2 dimensions."
-    matrix = matrix[:, 0:pertinentDimensions]
+#takes in matrix where rows are points and columns are coordinates
+#uses only two leftmost columns for 2-d graphing
+def plot(matrix):
     xDim = matrix[:, 0:1].T
     yDim = matrix[:, 1:2].T
-    print xDim, "\n", yDim
     plt.plot(xDim, yDim, 'ro')
     plt.axis([-6, 6, -4, 4])
     plt.show()
