@@ -81,15 +81,16 @@ def orderedEig(matrix, removeZeros = False):
             eVals = numpy.delete(eVals, [i])
             eVecs = numpy.delete(eVecs, i, 1)
     
-    indexArray = numpy.argsort(eVals)
+    indexArray = list(numpy.argsort(eVals))[::-1]
 
+    print eVals
     evecs = numpy.zeros_like(eVecs)
     evals = numpy.zeros_like(eVals)
 
     i=0
-    for value in numpy.nditer(indexArray):
-        evecs[:, value] = eVecs[:, i]
-        evals[value] = eVals[i]
+    for value in indexArray:
+        evecs[:, i] = eVecs[:, value]
+        evals[i] = eVals[value]
         i += 1
     return evals,evecs
     
@@ -105,6 +106,7 @@ def mmds(distanceMatrix): #must be matrix of squared distances
     eVecs = removeArtifacts(eVecs)
 
     lambdaMatrix = numpy.diag(eVals)
+    print lambdaMatrix
     rootLambdaMatrix = numpy.sqrt(lambdaMatrix)
     
     return rootLambdaMatrix.dot(eVecs.T).T
