@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>wordmap &#8212; [name tbd] 0.3 alpha documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3 alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="[name tbd] 0.3 alpha documentation" href="index.html" />
+    <link rel="next" title="Document" href="document.html" />
+    <link rel="prev" title="Welcome to the documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="wordmap">
+<h1>wordmap<a class="headerlink" href="#wordmap" title="Permalink to this headline">¶</a></h1>
+<p><em>The wordmap module, for all your mapping needs</em></p>
+<span class="target" id="module-compare.func.wordmap"></span><dl class="staticmethod">
+<dt id="compare.func.wordmap.synonymList">
+<em class="property">static </em><code class="descclassname">compare.func.wordmap.</code><code class="descname">synonymList</code><span class="sig-paren">(</span><em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.wordmap.synonymList" title="Permalink to this definition">¶</a></dt>
+<dd><p>A helper method to generate a list of synonyms of &#8220;word&#8221; using Princeton&#8217;s WordNet</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>word</strong> (<em>String</em>) &#8211; The word whose synonyms will be returned</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of the synonyms of &#8220;word&#8221;</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">List of Strings</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="compare.func.wordmap.generateWordMap">
+<em class="property">static </em><code class="descclassname">compare.func.wordmap.</code><code class="descname">generateWordMap</code><span class="sig-paren">(</span><em>doc</em>, <em>quiet=False</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.wordmap.generateWordMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a map of synonyms from the set of words in document &#8220;doc&#8221;
+Duplicate matches are ignored</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>doc</strong> (<a class="reference internal" href="document.html#compare.classes.Document" title="compare.classes.Document"><em>Document</em></a>) &#8211; Document from which to generate the word map</li>
+<li><strong>quiet</strong> (<em>Boolean</em>) &#8211; Optional argument to toggle printing progress bar (defaults to false)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Reference to the generated map</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">NetworkX Graph Object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="compare.func.wordmap.generateMarkov">
+<em class="property">static </em><code class="descclassname">compare.func.wordmap.</code><code class="descname">generateMarkov</code><span class="sig-paren">(</span><em>theMap</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.wordmap.generateMarkov" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a Markov matrix from the word map generated using <a class="reference internal" href="#compare.func.wordmap.generateWordMap" title="compare.func.wordmap.generateWordMap"><code class="xref py py-meth docutils literal"><span class="pre">generateWordMap()</span></code></a>
+The matrix is generated using the adjacency matrix of &#8220;theMap&#8221;</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theMap</strong> (<em>NetworkX Graph Object</em>) &#8211; A word synonymity map</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A Markov matrix</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">NumPy Matrix</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="compare.func.wordmap.generateDocumentVector">
+<em class="property">static </em><code class="descclassname">compare.func.wordmap.</code><code class="descname">generateDocumentVector</code><span class="sig-paren">(</span><em>allWords</em>, <em>document</em>, <em>count=False</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.wordmap.generateDocumentVector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a vertical vector of the frequency of occurance in allWords of each word in document
+The order of the words appearing in the returned vector will match the order of the words appearing in allWords.wordlist</p>
+<p>If parameter &#8220;count&#8221; is true, the vector contains the actual frequence (i.e., if &#8220;test&#8221; appears three times, its entry will be &#8220;3&#8221;)
+If parameter &#8220;count&#8221; is false, the vector ignores duplicate occurances (i.e., &#8220;test&#8220;&#8216;s entry would be &#8220;1&#8221;)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>allWords</strong> (<a class="reference internal" href="document.html#compare.classes.Document" title="compare.classes.Document"><em>Document</em></a>) &#8211; Document contating all of the words in the two documents being compared</li>
+<li><strong>document</strong> (<a class="reference internal" href="document.html#compare.classes.Document" title="compare.classes.Document"><em>Document</em></a>) &#8211; Document from which to generate the vector</li>
+<li><strong>count</strong> (<em>Boolean</em>) &#8211; Flag to determine whether the vector should contain the actual count of each word</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Vertical vector</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">NumPy Matrix</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="compare.func.wordmap.compareDocs">
+<em class="property">static </em><code class="descclassname">compare.func.wordmap.</code><code class="descname">compareDocs</code><span class="sig-paren">(</span><em>doc1</em>, <em>doc2</em>, <em>depth=0</em>, <em>quiet=False</em>, <em>count=False</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.wordmap.compareDocs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares two documents using wordmap</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>doc2</strong> (<em>doc1</em>) &#8211; Documents to compare</li>
+<li><strong>depth</strong> (<em>Integer</em>) &#8211; Determines how many times the document vectors are multiplied by the markov matrix (0 = once)</li>
+<li><strong>quiet</strong> (<em>Boolean</em>) &#8211; Determines whether word map generation should show progress bar (see <a class="reference internal" href="#compare.func.wordmap.generateWordMap" title="compare.func.wordmap.generateWordMap"><code class="xref py py-meth docutils literal"><span class="pre">generateWordMap()</span></code></a>)</li>
+<li><strong>count</strong> (<em>Boolean</em>) &#8211; determines whether word vectors should count words, or indicate presence alone (see <a class="reference internal" href="#compare.func.wordmap.generateDocumentVector" title="compare.func.wordmap.generateDocumentVector"><code class="xref py py-meth docutils literal"><span class="pre">generateDocumentVector()</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Similarity measure</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="compare.func.wordmap.compareFolderDocs">
+<em class="property">static </em><code class="descclassname">compare.func.wordmap.</code><code class="descname">compareFolderDocs</code><span class="sig-paren">(</span><em>folder</em>, <em>depth=0</em>, <em>quiet=False</em>, <em>drawMap=False</em>, <em>count=False</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.wordmap.compareFolderDocs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares all documents in a given folder, outputting a matrix of their similarities</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All documents must be in plain text format</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>folder</strong> &#8211; Folder contating documents to compare</li>
+<li><strong>depth</strong> (<em>Integer</em>) &#8211; Determines how many times the document vectors are multiplied by the markov matrix (0 = once)</li>
+<li><strong>quiet</strong> (<em>Boolean</em>) &#8211; Determines whether word map generation should show progress bar (see <a class="reference internal" href="#compare.func.wordmap.generateWordMap" title="compare.func.wordmap.generateWordMap"><code class="xref py py-meth docutils literal"><span class="pre">generateWordMap()</span></code></a>)</li>
+<li><strong>drawMap</strong> (<em>Boolean</em>) &#8211; Determines whether the markov matrix should be drawn using NetworkX</li>
+<li><strong>count</strong> (<em>Boolean</em>) &#8211; determines whether word vectors should count words, or indicate presence alone (see <a class="reference internal" href="#compare.func.wordmap.generateDocumentVector" title="compare.func.wordmap.generateDocumentVector"><code class="xref py py-meth docutils literal"><span class="pre">generateDocumentVector()</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Matrix containing pairwise similarity of all documents</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">NumPy Matrix</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to the documentation!</a></li>
+      <li>Next: <a href="document.html" title="next chapter">Document</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/wordmap.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, John Walnut, Tyrus Berry, Lincoln Mullen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/wordmap.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

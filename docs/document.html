@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Document &#8212; [name tbd] 0.3 alpha documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3 alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="[name tbd] 0.3 alpha documentation" href="index.html" />
+    <link rel="next" title="ngram" href="ngram.html" />
+    <link rel="prev" title="wordmap" href="wordmap.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="document">
+<h1>Document<a class="headerlink" href="#document" title="Permalink to this headline">¶</a></h1>
+<p><em>A friendly helper class</em></p>
+<span class="target" id="module-compare.classes"></span><dl class="class">
+<dt id="compare.classes.Document">
+<em class="property">class </em><code class="descclassname">compare.classes.</code><code class="descname">Document</code><span class="sig-paren">(</span><em>self</em>, <em>file = &quot;&quot;</em>, <em>title = &quot;Untitled&quot;</em>, <em>body = &quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.classes.Document" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to wrap an abstract document.  Can be a full legal brief, or a simple
+string of characters.</p>
+</dd></dl>
+
+<div class="section" id="fields">
+<span id="id1"></span><h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="attribute">
+<dt id="compare.classes.title">
+<code class="descclassname">compare.classes.</code><code class="descname">title</code><a class="headerlink" href="#compare.classes.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>String holding the title of the document.  If created from a file, will contain the name of the file (without the file extension)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.body">
+<code class="descclassname">compare.classes.</code><code class="descname">body</code><a class="headerlink" href="#compare.classes.body" title="Permalink to this definition">¶</a></dt>
+<dd><p>String containing the body of the document</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.file">
+<code class="descclassname">compare.classes.</code><code class="descname">file</code><a class="headerlink" href="#compare.classes.file" title="Permalink to this definition">¶</a></dt>
+<dd><p>String containing the path to the file from which the document is generated (see <a class="reference internal" href="#compare.classes.Document" title="compare.classes.Document"><code class="xref py py-meth docutils literal"><span class="pre">Document()</span></code></a>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.wordlist">
+<code class="descclassname">compare.classes.</code><code class="descname">wordlist</code><a class="headerlink" href="#compare.classes.wordlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>List containing each word in the document as an element (removing non-word characters)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.wordcount">
+<code class="descclassname">compare.classes.</code><code class="descname">wordcount</code><a class="headerlink" href="#compare.classes.wordcount" title="Permalink to this definition">¶</a></dt>
+<dd><p>A count of all of the words in the document (do not have to be unique words)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="compare.classes.meta">
+<code class="descclassname">compare.classes.</code><code class="descname">meta</code><a class="headerlink" href="#compare.classes.meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>An object that contains important information about the object</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Is this necessary?</p>
+</div>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="methods">
+<span id="id2"></span><h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="method">
+<dt>
+<code class="descclassname">compare.classes.</code><code class="descname">Document</code><span class="sig-paren">(</span><em>self</em>, <em>file = &quot;&quot;</em>, <em>title = &quot;Untitled&quot;</em>, <em>body = &quot;&quot;</em><span class="sig-paren">)</span></dt>
+<dd><p>Constructor.  See <a class="reference internal" href="#fields">fields</a> for parameter description.  If <a class="reference internal" href="#compare.classes.file" title="compare.classes.file"><code class="xref py py-attr docutils literal"><span class="pre">file</span></code></a> is specified, document is generated from file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="compare.classes.toLowerCase">
+<code class="descclassname">compare.classes.</code><code class="descname">toLowerCase</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.classes.toLowerCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the entire document to lowercase, both the <a class="reference internal" href="#compare.classes.body" title="compare.classes.body"><code class="xref py py-attr docutils literal"><span class="pre">body</span></code></a> and the <a class="reference internal" href="#compare.classes.wordlist" title="compare.classes.wordlist"><code class="xref py py-attr docutils literal"><span class="pre">wordlist</span></code></a></p>
+</dd></dl>
+
+</div></blockquote>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Document this class <em>no pun intended</em></p>
+</div>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Implement other magic methods (comparison?, formatting?)</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Document</a><ul>
+<li><a class="reference internal" href="#fields">Fields</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="wordmap.html" title="previous chapter">wordmap</a></li>
+      <li>Next: <a href="ngram.html" title="next chapter">ngram</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/document.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, John Walnut, Tyrus Berry, Lincoln Mullen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/document.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
