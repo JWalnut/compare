@@ -36,11 +36,12 @@ def svdpca(data, k=1):
     #Compute percentage of variance in each principal component
     S = S*S/data.shape[0]
     S = S/sum(S)
-    #Pull eigenvectors (number depends on "k"
+    #Pull eigenvectors (number depends on "k")
     evecs = U[:, 0:k]
     Z = evecs.T.dot(data.T)
     return Z, S
 
+# function to create a distance matrix from a matrix of points
 def generateDistanceMatrix(matrix):
     dmat = numpy.zeros((matrix.shape[0], matrix.shape[0]))
     for i in range(0, matrix.shape[0]-1):
@@ -52,7 +53,7 @@ def generateDistanceMatrix(matrix):
             dmat[j, i] = sum
     return dmat
 
-#removes values smaller than tolerance from matrix
+# removes values smaller than tolerance from matrix
 def removeArtifacts(matrix, tolerance=float(10e-10)):
     if (len(matrix.shape) == 1):
         for i in range(0, matrix.size):
@@ -65,6 +66,7 @@ def removeArtifacts(matrix, tolerance=float(10e-10)):
                     matrix[i,j] = 0
     return matrix
 
+# checks if matrix is symmetric (i.e., is a valid distance array)
 def isSymmetric(matrix):
     for i in range(0, matrix.shape[1]):
         for j in range(0, i+1):
@@ -72,6 +74,7 @@ def isSymmetric(matrix):
                 return False
     return True
 
+# performs eigenvalue decomposition on matrix, and sorts the eigenvectors by their eigenvalues (from largest to smallest)
 def orderedEig(matrix, labelsMatrix = None, stripNegatives = True):
     eVals,eVecs = np.eig(matrix)
     eVals = removeArtifacts(eVals)
@@ -96,7 +99,9 @@ def orderedEig(matrix, labelsMatrix = None, stripNegatives = True):
         i += 1
     return evals,evecs
     
-def mmds(distanceMatrix): #must be matrix of squared distances
+# performs metric multidimensional scaling on a distance matrix
+def mmds(distanceMatrix):
+    distanceMatrix = numpy.square(distanceMatrix)
     pointsCount = float(distanceMatrix.shape[0])
     centeringMatrix = numpy.identity(pointsCount) - (1/pointsCount)*numpy.ones((pointsCount, pointsCount))
 

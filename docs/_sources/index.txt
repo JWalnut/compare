@@ -18,6 +18,7 @@ Contents:
    ngram
    corpus
    datascience
+   graphics
 
 Indices and tables
 ==================

@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="[name tbd] 0.3 alpha documentation" href="index.html" />
+    <link rel="next" title="graphics" href="graphics.html" />
     <link rel="prev" title="Corpus" href="corpus.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -68,13 +69,46 @@
 </dd></dl>
 
 <dl class="staticmethod">
+<dt id="compare.func.datascience.orderedEig">
+<em class="property">static </em><code class="descclassname">compare.func.datascience.</code><code class="descname">orderedEig</code><span class="sig-paren">(</span><em>matrix</em>, <em>labelsMatrix=None</em>, <em>stripNegatives=True</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.datascience.orderedEig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs Eigendecomposition on matrix, then sorts the Eigenvalues by their Eigenvectors from greatest to least.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>matrix</strong> (<em>NumPy Matrix</em>) &#8211; Matrix to be decomposed</li>
+<li><strong>labelsMatrix</strong> (<em>List-like</em>) &#8211; 1-D matrix containing names of the labels for each point to be decomposed (note: not used currenlty)</li>
+<li><strong>stripNegatives</strong> (<em>Boolean</em>) &#8211; Flag indicating that the algorithm should throw out negative Eigenvalues, and their associated Eigenvector.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Matrix of Eigenvalues and Eigenvectors</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">NumPy Matrix, NumPy Matrix</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
 <dt id="compare.func.datascience.mmds">
 <em class="property">static </em><code class="descclassname">compare.func.datascience.</code><code class="descname">mmds</code><span class="sig-paren">(</span><em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#compare.func.datascience.mmds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generates the Metrix Multidimensional Scaling of the given matrix</p>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Write method &amp; document</p>
-</div>
+<dd><p>Performs Metric Multidimensional Scaling on the given distance matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>distanceMatrix</strong> (<em>NumPy Matrix</em>) &#8211; Matrix of distances between points</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Matrix of points with dimensions in ...</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">NumPy Matrix</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -89,6 +123,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="corpus.html" title="previous chapter">Corpus</a></li>
+      <li>Next: <a href="graphics.html" title="next chapter">graphics</a></li>
   </ul></li>
 </ul>
 </div>
